@@ -15,7 +15,7 @@ a:hover {
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'RobotoMono-Regular', monospace;
     font-size: 18px;
     margin: 0;
     color: #555555;
@@ -100,11 +100,6 @@ P {
     border-bottom: none;
 }
 
-.firstletter {
-	font-size: 25px;
-	color: #000000;
-}
-
 .blog-title {
     font-size:  25px;
     color: #ffffff;
@@ -160,8 +155,9 @@ P {
 }
 
 .article-content p {
-	font-size: 21px;
-	line-height: 36px;
+	    font-size: 15px;
+    line-height: 25px;
+    font-weight: 400;
 }
 
 .article-content img {
@@ -243,6 +239,6 @@ P {
 }
 
 @font-face {
-    font-family: "Open Sans";
-    src: url("../fonts/Open_Sans/OpenSans-Regular.ttf");
+    font-family: "RobotoMono-Regular";
+    src: url("../fonts/RobotoMono-Regular.ttf");
 }
