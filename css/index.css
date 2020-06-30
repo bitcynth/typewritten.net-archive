@@ -1,0 +1,248 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    border-bottom: 2px solid #555555;
+    color: #555555;
+}
+
+a:hover {
+	border: none;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    margin: 0;
+    color: #555555;
+    height:  100%;
+}
+
+header {
+    width: 100%;
+}
+
+.header2 {
+    position: relative;
+}
+
+.nav {
+    top: 5px;
+    left: 20px;
+    position:  absolute;
+}
+
+.logo {
+    top: 5px;
+    margin: 20px auto 20px auto;
+    width: 111px;
+    height: 25px;
+    font-size:  35px;
+}
+
+.logo a {
+    text-decoration: none;
+    border: none;
+}
+
+.logo a:hover {
+	border-bottom: 2px solid #555555;
+}
+
+.social {
+    top: 5px;
+    right: 20px;
+    position:  absolute;
+}
+
+.page {
+    height: 100%;
+    width:  100%;
+}
+.content {
+    height: 100%;
+    width:  100%;
+    display: block;
+    padding: 50px 20px 0px 20px;
+}
+
+.text2 {
+    font-size: 25px;
+    text-transform: none;
+    padding: 5px;
+}
+
+h1 {
+    font-size:  52px;
+    font-weight:  100;
+    text-transform:  uppercase;
+    padding:  20px 0px;
+}
+
+h2 {
+    font-size:  75px;
+    font-weight:  100;
+    padding: 5px 50px;
+}
+
+
+P {
+    padding:  10px 0px;
+    font-size:  17px;
+}
+
+.text2 a:hover {
+    text-decoration:  none;
+    border-bottom: none;
+}
+
+.firstletter {
+	font-size: 25px;
+	color: #000000;
+}
+
+.blog-title {
+    font-size:  25px;
+    color: #ffffff;
+    padding: 0px;
+}
+
+.blog-title a {
+	color: #FFFFFF;
+	background: #555555;
+	padding: 0px 4px 0px 4px;
+}
+
+.posts {
+    padding: 10px 4px 5px;
+}
+
+.post-title {
+    padding: 0px 0px 10px 0px;
+    font-size: 25px;
+}
+
+.post-description {
+    font-size:  18px;
+    font-size: 17px;
+    line-height: 36px;
+    text-transform:  none;
+    padding: 0px 0px;
+}
+
+.post {
+    max-width: 820px;
+    padding: 0px 0px 20px;
+    margin: 0px 0px 0px;
+}
+
+.article {
+    padding: 10px;
+    max-width:  820px;
+    margin:  0 auto;
+}
+
+.article-header h1 {
+    padding:  0px 0px 10px 0px;
+    font-size: 25px;
+}
+
+.date, .author {
+	padding: 0px 10px 10px 0px;
+}
+
+.article-content {
+	padding: 20px 0px;
+}
+
+.article-content p {
+	font-size: 21px;
+	line-height: 36px;
+}
+
+.article-content img {
+	width: 100%;
+}
+
+.line-through {
+	text-decoration: line-through;
+}
+
+@media all and (max-width: 1120px) {
+
+	.logo {
+		padding: 20px 25px;
+		margin 0;
+		width: auto;
+		height: auto;
+		margin:  0;
+	}
+
+	.article-header h1 {
+		/* font-size: 21px; */
+	}
+
+	.article-content p {
+		font-size: 21px;
+	}
+
+	body {
+		font-size: 18px;
+	}
+}
+
+@media all and (max-width: 620px) {
+
+	.logo {
+		padding: 20px 10px 10px;
+		margin 0;
+		width: auto;
+		height: auto;
+		margin:  0;
+	}
+
+	.content {
+	   padding: 20px 5px;
+	}
+	
+	.text2 {
+	   font-size: 25px;
+	}
+
+	.blog-title {
+		font-size: 21px;
+		width: 105px
+	}
+
+	.post-title {
+		font-size: 19px;
+	}
+
+	.post-description {
+		font-size: 15px
+	}
+
+	/* Post Section */
+
+	body {
+       font-size: 16px;
+	}
+
+    .article-header h1 {
+    	font-size: 17px;
+    }
+
+    .article-content p {
+    	font-size: 15px;
+    }
+
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("../fonts/Open_Sans/OpenSans-Regular.ttf");
+}

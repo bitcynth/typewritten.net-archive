@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Final part of phishing with EV - Burton</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/css/index.css" rel="stylesheet" type="text/css"> 
+    </head>
+    <body>
+        <header>
+            <div class="header2">
+                <div class="logo"><a href="/">Burton</a></div>
+            </div>
+        </header>
+        <div class="page">
+            <div class="content">
+            <div class="article">
+                <div class="article-header">
+                    <h1>Final part of phishing with EV</h1>
+                </div>
+                <div class="article-content">
+                <p>A lot has changed since I wrote the <a target="_blank" href="/writer/ev-phishing/">First part of phishing with EV</a> and this is the right time to release the final part of this series. Let’s get on.</p>
+<p>A few weeks after the release of the first part of this series, a discussion started on the CA/Browser Forum public list and a few methods were discussed such as face to face validation, etc. There was some resistance to the discussion by some as they felt that the EV guidelines were rigid enough and didn’t need to be revisited.  Nothing really came from the discussions, expect the CA/Browser Forum validation working group is going to investigate the matter further.</p>
+<p>A few weeks after this discussion, Ian Carroll published an article named “<a target="_blank" href="https://stripe.ian.sh/">Extended Validation is Broken</a>” and this article demonstrated an easy way to obtain an EV certificate for phishing. In a nutshell, every US state operates an independent company registrar and as such, this means that incorporating a company in Delaware doesn’t give that company exclusive rights to that name in other states and as such someone else can incorporate the same name in another state such as the state of Kentucky.</p>
+<p>EV certificates have not materially updated their requirements in 12 years and have not attempted to address core issues such as colliding names, and as a result, over time the browsers have been removing detail from the EV indicator which only masks the problem as this incident shows.</p>
+<p>As a result of this inaction, both Ian’s “Stripe, Inc” and the “Stripe, Inc” the payment company are represented with the same in the security indicator. The only way to tell the difference is to navigate to the certificate details tab (if present) and closely inspect the details. No one does this, so it’s a perfect illusion.</p>
+<p>What I describe above is precisely what Ian did with “Stripe, Inc”, he incorporated the company in the state of Kentucky which as you can see is exactly the same company name as the payment provider “Stripe, Inc” is incorporated in the state of Delaware.</p>
+<p>Though Ian’s project was clearly in the name of research it is also important to keep in mind that there is a legitimate business need for multiple entities to share the same name. For example, there could be a “Stripe, Inc” that offers pavement striping services and they too should be able to get an EV certificate for their site.</p>
+<p>He then went to Comodo and got an EV certificate for “Stripe, Inc” and see the results for yourself. It’s stunning.</p>
+<p><img src="/images/safari.png"></p>
+<p><img src="/images/firefox.png"></p>
+<p>I would like to thank Ian Carroll for taking the time to do this research,<br>
+After the release of Ian’s article, more discussions took place and the press started looking into both pieces and all this gathered more traction but still, nothing changed with EV.</p>
+<p>Five months later and out of the nowhere, Comodo revokes the “Stripe, Inc” EV certificate and states that the EV certificate was revoked for being misleading and fraudulent. On top of this, Comodo <a href="https://scotthelme.co.uk/the-power-to-revoke-lies-with-the-ca/" target="_blank">initially</a> refused to provide Ian with his money back. Thankfully he did ultimately manage to get his money back when it became public.</p>
+<p>A month goes by and Ian manages to get another EV certificate from GoDaddy for “Stripe, Inc”. Everything is going well until GoDaddy revokes this EV certificate hours later. Why? Supposed “Fraud” reasons.</p>
+<p>Both Comodo and GoDaddy should never have revoked these EV certificates, there was nothing on the site which was misleading or fraudulent, the information included in the certificate was factual and in compliance with the requirements of the EV Guidelines. This was an educational site showing one of the ways that EV is broken.</p>
+<p>Another month goes by and Comodo releases a <a target="_blank" href="https://www.comodoca.com/en-us/about/blog/on-comodo-ca%E2%80%99s-recent-revocation-of-an-ssl-certifi/">public statement</a> apologising to Ian for revoking “Stripe, Inc” EV certificate and everything is looking up. First time ever a CA has apologized for making a mistake. Great!</p>
+<p>Before I continue further, I’m going to clear up some points which I didn’t express properly in the first part of this series.</p>
+<p>The company “Identity Verified” is a legitimate incorporated company in the UK. The company type is a limited company by guarantee with the “limited” exemption. This means that I don’t have to include the word “limited” at the end of the company name.</p>
+<p>This company was incorporated using a legitimate address and identification. You can view the Companies House incorporation document <a href="https://beta.companieshouse.gov.uk/company/10875639" target="_blank">here</a>.</p>
+<p>After the announcement from Comodo, I decided to try again and found out if they would actually issue the EV certificate for “Identity Verified” I went on the CertCenter site, a Comodo reseller, and ordered a standard EV certificate and after a few hours it was issued.</p>
+<p><img src="/images/iv.jpg"></p>
+<p>I quickly installed the EV certificate on sirburton.com since from my previous experiences I know CAs are known for changing their minds quickly and for revoking certificates and left, right and centre. Then the news came.</p>
+<p>Comodo sent an email informing me that they’ve revoked the EV certificate and that I should contact CertCenter and request a refund. Now, at the time I was incredibly busy and didn’t check my inbox at all. Once I became aware some two hours later, I promptly sent an email asking “Why was the certificate revoked?” and the response I received was abysmal. Let’s not beat around the bush here, the whole email thread was deplorable. The only meaningful information I got was “compliance issues”. What does this mean? What do I need to do to address these “compliance issues”? Do I need to get a magic ball? Ridiculous!</p>
+<p><img src="/images/email.jpg"></p>
+<p>I decided that the best course of action is now to publicly tweet out the emails (name and order number blurred out) and get the community on board and this will entice Comodo to respond back with a better explanation which they did. I’ve copied and put Comodo’s response in this post and in italic to make sure they can’t be deleted later.</p>
+<p><em>“<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ffd1bf8b8d9086978a918b">[email&#160;protected]</a> and @sirjamesburton Comodo CA’s subscriber agreement (<a href="https://bit.ly/2rvuEpH">https://bit.ly/2rvuEpH</a> ), allows revocation if “information in the certificate is inaccurate or misleading” (3 (iv)). (1/3)”</em></p>
+<p><em>“Our validators felt that the company name could easily be misinterpreted by users and that under the circumstances revocation was in online community’s best interest. (2/3)”</em></p>
+<p><em>“The certificate world is always in flux and CAs’ practices &amp; policies must respond to change. We want to engage the greater community to ensure we are accounting for these viewpoints as we evolve. James, If you disagree with this, we are open to hearing your rationale. (3/3)”</em></p>
+<p>Section 3, paragraph IV:</p>
+<p><em>“The Certificate has been 1) misused, 2) used contrary to law, rule, or regulation or 3) used, directly or indirectly, for illegal or fraudulent purposes;”</em></p>
+<p>There is nothing in paragraph 3(IV) that substantiates the basis of revoking this EV certificate. It hasn’t been misused, hasn’t been used for unlawful or harmful purposes. So, what am I missing? Nothing.</p>
+<p>The company name “Identity Verified” itself could be used to give the illusion that the website is indeed safe and trustworthy, but I think we’ve been looking at this situation from the wrong way.</p>
+<p>There are lots of ways one can use an EV certificate for harmful purposes and mine and Ian’s research do not even cover half of it. <a href="https://cabforum.org/pipermail/public/2017-November/012519.html" target="_blank">Gerv Markham</a> gave a wonderful alternative scenario:</p>
+<p><em>“If you want an alternative scenario to use mentally, how about the scenario of a fly-by-night internet shop, set up with an EV certificate in the run-up to Christmas, which spends a week taking people's money and then disappears with it before people realize nothing is shipping.”</em></p>
+<p>I think this says it all. EV can’t be relied on to protect users against harm. There is no fundamental difference between EV and DV expect for the green bar. Users are not at all good at properly differentiating the real sites from the fraudulent sites and that why we’ve got other methods such as Google Safe Browsing and Microsoft SmartScreen.</p>
+<p>Coming back to whether Comodo should have revoked this certificate and the answer is profoundly NO, Why? Everything has risk and risk is part of the game of being a CA. CAs shouldn’t be allowed to pick or choose who they issue a certificate to as they are here for public good and restricting certificate issue based on content goes against the very foundations of the web.</p>
+<p><em>“The original idea of the web was that it should be a collaborative space where you can communicate through sharing information.</em> -- Tim Berners-Lee”</p>
+<p>CAs can lower this risk be enhancing their vetting procedures and what I mean by that is require additional documentation from the customer such as identity documentation of the requestor, business bank statements, a signed accountant letter, etc.</p>
+<p>The intelligence services do this for different categories of classified material and these categories are SECRET, TOP SECRET, and STRAP.  To make sure that these individuals can be trusted with this material they are vetted to a certain level and these levels are as follows: Counter Terrorist Check (CTC), Security Check (SC) and Developed Vetting (DV). DV is required to work at the GCHQ.</p>
+<p>I’m releasing a further article about improving extended validation further and that will go into more detail.</p>
+<p>Personal note, I was saddened to hear the news that Gerv Markham cancer has reappeared and is incurable. My heart goes out to him and his family. The work Gerv has done has revolutionized this industry and will be remembered forever.</p>
+<p>If you've got any questions at all, please email them to contact AT typewritten DOT NET.</p>
+<p><a href="https://twitter.com/B_u_r_t_o_n">Burton</a></p>
+                </div>
+            </div>
+</div>        </div>
+        <footer>
+<p>Thank you to <a href="https://unmitigatedrisk.com/">Ryan Hurst</a> for the recommendations.</p>
+        </footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-92425934-1', 'auto');
+ga('send', 'pageview');
+</script>  
+    </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>First part of phishing with EV - Burton</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/css/index.css" rel="stylesheet" type="text/css"> 
+    </head>
+    <body>
+        <header>
+            <div class="header2">
+                <div class="logo"><a href="/">Burton</a></div>
+            </div>
+        </header>
+        <div class="page">
+            <div class="content">
+            <div class="article">
+                <div class="article-header">
+                    <h1><span class="firstletter">F</span>irst part of phishing with EV</h1>
+                </div>
+                <div class="article-content">
+                <p><span class="firstletter">T</span>his post is intended for a technical audience interested in how an EV SSL certificate can be used as an effective phishing device. I won't be held liable if someone uses this post for unlawful intentions. No one was harmed in this demonstration. Let's get on.</p>
+<p><span class="firstletter">E</span>xtended validation or EV was designed back in the day to be an effective way to prevent phishing but, as we've seen through the years that extended validation has a lot of short comings such as long vetting processes, lack of wildcard support, and many other things. Now I'm going to demonstrate that it is indeed possible to phish with an EV SSL and how easy and straightforward it is to obtain the certificate. View Ryan Hurst's blog post <a href="https://unmitigatedrisk.com/?p=598">here</a> about the overall positive trust indicators in browsers.</p>
+<p><span class="firstletter">F</span>irst, I needed to think of a name which would be effective for phishing. After some deliberation, I chose the name &quot;Identity Verified&quot; as it would give the illusion to the user that the phishing site is safe.</p>
+<p><span class="firstletter">S</span>econd, I had to think of a way of getting an EV SSL certificate for the intended name. After some research on the CA/Browser forum site, I found that, in the EV SSL certificate guidelines, section 8.5.2 stipulates that incorporated private entities are allowed to get hold of an EV SSL certificates. With that information in mind, I decided to incorporate a company here in the UK and after some more research, I found that a limited company by guarantee with the limited exemption was the right one but there was one catch; to incorporate a company in the UK, you need to have a verifiable address and valid ID. So what does an attacker do? Well they can purchase a valid stolen ID for a few pounds from the so called &quot;Dark web&quot; and just use, a service address as the address of the company and the director's home. These service addresses can be bought online for next to nothing.</p>
+<p><span class="firstletter">N</span>ote: This company was made with a legitimate address and ID.</p>
+<p><span class="firstletter">N</span>ow finally, I began searching for a company to incorporate this new company on my behalf and after a good hour of researching on Google, I found the right one. I won't say the company name here for legal purposes but I will say that the process was incredibly easy to do; no ID check to my knowledge and it costs less than £40. It took the next day for the company to be incorporated by Companies House.</p>
+<p><img src="/images/CompaniesHouse.PNG" alt="Company"></p>
+<p><span class="firstletter">A</span>fter all, this was finished, I now had to include a telephone number on a third party database as stipulated in section 11.5.2 of the EV SSL certificate guidelines. I chose Dun and Bradstreet as the third party database as it's extensively used by CAs for third party checking.</p>
+<p><span class="firstletter">I</span>t was absolutely easy to add the extra information to Dun and Bradstreet database. I only needed to get my Dun and Bradstreet ID and fill in a form with my mobile number as the telephone and after a few days, it was included.</p>
+<p><img src="/images/duns.png" alt="Updated Database"></p>
+<p>I'm ready to get an EV SSL Certificate. I chose Comodo and Symantec for this demonstration as they were that the time of this post the largest CAs in the industry.</p>
+<p>First, I went to Symantec site and found the 30 days free trial of production use EV SSL Certificate. After filling in all the details required by Symantec and including a 256-bit ECC CSR, I was finished for now until the validation process was completed.</p>
+<p><img src="..//images/Trial.png" alt="Free Trial Symantec"></p>
+<p><img src="/images/order.PNG" alt="Symantec Order"></p>
+<p>After a day and a bit of pushing the certificate was issued. You can view the issued extended validation SSL certificate on crt.sh: <a href="https://crt.sh/?id=181513189">https://crt.sh/?id=181513189</a></p>
+<p><img src="/images/SymantecOrder.png" alt="Symantec Order Completed"></p>
+<p>After the successfully issued from Symantec, I then tried doing the same again from Comodo and it failed at the first hurdle. Richard Smith, who is the head of validation at Comodo felt that the certificate couldn't be issued due to compliance issues. Great job Richard!</p>
+<p>Now the certificate part is finished, I can now get on with the phishing part of this test and demonstrate how someone could phish with an EV SSL. First I took a copy of both the Google and PayPal sites and then upload them sites onto nothing.org.uk. Now in a real world phish scenario, an attacker would need to also setup a database and etc to capture the data but I didn't need to because this wasn't an actual phishing attempt to capture real users' data.</p>
+<p>In these screenshots below from Safari in OSX and IOS the chances of a successful phish are extremely high because of the way Safari hides the actual domain when the site is using an EV SSL and in, combination with the company name &quot;Identity Verified&quot; the site looks legitimate and safe.</p>
+<p><img src="/images/0003screenshot-1.png" alt="OSX Safari EV"><br>
+<img src="/images/0003screenshot.png" alt="OSX Safari EV"><br>
+<img src="/images/1111.png" alt="IOS Safari EV"></p>
+<p>In this screenshot of Google Chrome, the domain name and the company name are clearly separated which can help the user identity if it's indeed a phishing site or not but if someone could get a hold of a short single letter like p.uk for PayPal or g.uk for Google the user would think that the company in question has moved over to smaller domain name and not be concerned.</p>
+<p><img src="/images/google2.jpg" alt="Site2"></p>
+<p>A view of the certificate contents in Firefox.<br>
+<img src="/images/identity.jpg" alt="Certificate Contents"></p>
+<p class="line-through">To conclude this post, I think Symantec shouldn't have issued this EV SSL certificate in the first place as the company name was too common and could easily be misconstrued in the browser.</p>
+<p>Update (5th May 2018): My opinion has since changed.</p>
+<p>The EV guidelines are not up to par and can be easily circumvented. Stringent vetting on both the applicant and the company are necessary and this will provide additional assurance that the EV cert won't be used for harmful purposes. If the EV cert was ever used for harmful purposes the investigators can easily obtain the necessary details and prosecute the offenders if guilty. </p>
+<p>In this case, the CA should've been more cautious in issuing this EV cert and should've required extra details from the applicant to make sure that this particular EV cert would not be used for harmful purposes.</p>
+<p>Check out Ian's <a href="https://stripe.ian.sh">Extended Validation is Broken</a> article. This article enhances this research and shows different way to effective phish users.</p>
+<p><a href="https://twitter.com/B_u_r_t_o_n">Burton</a></p>
+                </div>
+            </div>
+</div>        </div>
+        <footer>
+
+        </footer>
+        <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-92425934-1', 'auto');
+ga('send', 'pageview');
+</script>   
+    </body>
+</html>
