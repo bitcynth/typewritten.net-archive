@@ -155,8 +155,9 @@ P {
 }
 
 .article-content p {
-	font-size: 21px;
-	line-height: 36px;
+	    font-size: 15px;
+    line-height: 25px;
+    font-weight: 400;
 }
 
 .article-content img {
